@@ -24,8 +24,8 @@ class FilmReview(models.Model):
     image_source = models.URLField()
     description = models.CharField(max_length=700)
     director = models.CharField(max_length=255)
-    category = models.ManyToManyField(Categories)
-    characters = models.ManyToManyField(Characters)
+    genre = models.ManyToManyField(Categories)
+    performers = models.ManyToManyField(Characters)
 
     def __str__(self):
         return self.description
