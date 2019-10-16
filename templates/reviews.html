@@ -5,66 +5,25 @@
 					<div class="page">
 						<div class="breadcrumbs">
 							<a href="/">Home</a>
-							<span>Movie Review</span>
+							<span>Category:{{category.name}}</span>
 						</div>
 
 						<div class="filters">
-							<select name="#" id="#" placeholder="Choose Category">
-								<option value="#">Action</option>
-								<option value="#">Drama</option>
-								<option value="#">Fantasy</option>
-								<option value="#">Horror</option>
-								<option value="#">Adventure</option>
-							</select>
-							<select name="#" id="#">
-								<option value="#">2012</option>
-								<option value="#">2013</option>
-								<option value="#">2014</option>
+							<select name="#" id="touchsplashmenu" onchange="location.href=this.value" placeholder="Choose Category">
+								<option value="{% url 'catalog' category.slug %}">{{category.name}}</option>
+								{% for category in categories %}
+								<option value="{% url 'catalog' category.slug %}">{{category.name}}</option>
+								{% endfor %}
 							</select>
 						</div>
 						<div class="movie-list">
+							{% for film in films %}
 							<div class="movie">
-								<figure class="movie-poster"><img src="/static/dummy/thumb-3.jpg" alt="#"></figure>
-								<div class="movie-title"><a href="/review">Maleficient</a></div>
-								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
+								<figure class="movie-poster"><img src="{{film.image.url}}" alt="{{film.name}}" style="height:200px;"></figure>
+								<div class="movie-title"><a href="{% url 'review' film.slug %}">{{film.name}}</a></div>
+								<p>{{film.description}}</p>
 							</div>
-							<div class="movie">
-								<figure class="movie-poster"><img src="/static/dummy/thumb-4.jpg" alt="#"></figure>
-								<div class="movie-title"><a href="/review">The adventure of Tintin</a></div>
-								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-							</div>
-							<div class="movie">
-								<figure class="movie-poster"><img src="/static/dummy/thumb-5.jpg" alt="#"></figure>
-								<div class="movie-title"><a href="/review">Hobbit</a></div>
-								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-							</div>
-							<div class="movie">
-								<figure class="movie-poster"><img src="/static/dummy/thumb-6.jpg" alt="#"></figure>
-								<div class="movie-title"><a href="/review">Exists</a></div>
-								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-							</div>
-							<div class="movie">
-								<figure class="movie-poster"><img src="/static/dummy/thumb-1.jpg" alt="#"></figure>
-								<div class="movie-title"><a href="/review">Drive hard</a></div>
-								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-							</div>
-							<div class="movie">
-								<figure class="movie-poster"><img src="/static/dummy/thumb-2.jpg" alt="#"></figure>
-								<div class="movie-title"><a href="/review">Robocop</a></div>
-								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-							</div>
-							<div class="movie">
-								<figure class="movie-poster"><img src="/static/dummy/thumb-7.jpg" alt="#"></figure>
-								<div class="movie-title"><a href="/review">Life of Pi</a></div>
-								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-							</div>
-							<div class="movie">
-								<figure class="movie-poster"><img src="/static/dummy/thumb-8.jpg" alt="#"></figure>
-								<div class="movie-title"><a href="/review">The Colony</a></div>
-								<p>Sed ut perspiciatis unde omnis iste natus error voluptatem doloremque.</p>
-							</div>
-						</div> <!-- .movie-list -->
-
+							{% endfor %}
 						<div class="pagination">
 							<a href="#" class="page-number prev"><i class="fa fa-angle-left"></i></a>
 							<span class="page-number current">1</span>
@@ -77,4 +36,4 @@
 					</div>
 				</div> <!-- .container -->
 			</main> {% endblock main %}
-			{%include 'footer.html'%}
+			{%include 'footer.html' %}
