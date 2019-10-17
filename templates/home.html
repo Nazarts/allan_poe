@@ -10,7 +10,7 @@
 								<div class="slider">
 									<ul class="slides">
 										{% for film in slider_films %}
-										<li><a href="{% url 'review' film.slug %}"><img src="{{film.image.url}}" style="height:100%;" alt="Slide 1"></a></li>
+										<li><a href="{% url 'review' film.slug %}"><img src="{{film.image.url}}" style="height:567px;" alt="Slide 1"></a></li>
 										{% endfor %}
 									</ul>
 								</div>
@@ -20,7 +20,7 @@
 									{% for film in top_films1 %}
 									<div class="col-sm-6 col-md-12">
 										<div class="latest-movie">
-											<a href="{% url 'review' film.slug %}"><img src="{{film.image.url}}" alt="Movie 1"></a>
+											<a href="{% url 'review' film.slug %}"><img src="{{film.image.url}}" alt="Movie 1" style="height:170px;"></a>
 										</div>
 									</div>
 									{% endfor %}
@@ -32,7 +32,7 @@
 							{% for film in top_films2 %}
 							<div class="col-sm-6 col-md-3">
 								<div class="latest-movie">
-									<a href="{% url 'review' film.slug %}"><img src="{{film.image.url}}" alt="Movie 3"></a>
+									<a href="{% url 'review' film.slug %}"><img src="{{film.image.url}}" alt="Movie 3" style="height:185px;"></a>
 								</div>
 							</div>
 							{% endfor %}

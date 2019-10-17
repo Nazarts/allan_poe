@@ -54,9 +54,9 @@ def crawler(url):
 
 
 def link_generator():
-    for b in range(2, 9):
+    for b in range(8, 10):
         for i in range(1, 24):
-            temp = get(f'https://ew.com/sitemap.xml?yyyy=2018&mm=0{b}&dd={i}')
+            temp = get(f'https://ew.com/sitemap.xml?yyyy=2017&mm=0{b}&dd={i}')
             chabo = 'https://ew.com/movies/'
             tree = etree.fromstring(temp.content)
             for i in tree:

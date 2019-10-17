@@ -34,7 +34,7 @@
 
 									<ul class="starring">
 										<li><strong>Directors:</strong>{{film.director}}</li>
-										<li><strong>Stars:</strong> Nicolas Cage, Ryan Reynolds, Emma Stone</li>
+										<li><strong>Stars|</strong>{% for perf in performers %} | {{perf.name}} {% endfor %}</li>
 									</ul>
 								</div>
 							</div> <!-- .row -->

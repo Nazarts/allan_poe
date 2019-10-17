@@ -21,10 +21,11 @@ from catalog import views
 
 urlpatterns = [
 
-    path('', views.home_view, name='home'),
-    path('<slug:slug>', views.catalog_view, name="catalog"),
+    path('', views.HomeView.as_view(), name='home'),
+    path('<slug:slug>', views.CatalogFilmReviews.as_view(), name="catalog"),
+    path('<slug:slug>/page<int:page>', views.CatalogFilmReviews.as_view(), name="catalog"),
 #   path('review/<slug:slug>/<int:premiere>', views.single_view, name="review"),
-    path('review/<slug:slug>', views.single_view, name="review"),
+    path('review/<slug:slug>/', views.SingleFilmView.as_view(), name="review"),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
 

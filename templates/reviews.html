@@ -24,15 +24,23 @@
 								<p>{{film.description}}</p>
 							</div>
 							{% endfor %}
+                       {% if is_paginated %}
 						<div class="pagination">
+                            {% if page__obj.has__previous %}
 							<a href="#" class="page-number prev"><i class="fa fa-angle-left"></i></a>
-							<span class="page-number current">1</span>
-							<a href="#" class="page-number">2</a>
-							<a href="#" class="page-number">3</a>
-							<a href="#" class="page-number">4</a>
-							<a href="#" class="page-number">5</a>
-							<a href="#" class="page-number next"><i class="fa fa-angle-right"></i></a>
-						</div>
+                            {% else %}
+                            {% endif %}
+                            {% for i in paginator.page_range %}
+                            {% if page__obj.number %}
+                            <span class="page-number current">{{i}}</span>
+                            {% endif %}
+							<a href="{{category.slug}}?page={{i}}" class="page-number">{{i}}</a>
+                            {% endfor %}
+                            {% if page__obj.has__previous %}
+                            <a href="#" class="page-number next"><i class="fa fa-angle-right"></i></a>
+						    {% endif %}
+                        </div>
+                            {% endif %}
 					</div>
 				</div> <!-- .container -->
 			</main> {% endblock main %}
